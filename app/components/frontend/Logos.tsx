@@ -1,6 +1,6 @@
 import Image from "next/image";
-import KindeLogo from "@/public/logos/kinde.svg";
-import NextJsLogo from "@/public/logos/nextjs.svg";
+import KindeLogo from "/Users/advit/saas_tut/public/kinde.svg";
+import NextJsLogo from "/Users/advit/saas_tut/public/nextjs.svg";
 export function Logos() {
   return (
     <div className="py-10">

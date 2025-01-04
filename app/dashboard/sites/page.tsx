@@ -12,7 +12,7 @@ import { FileIcon, PlusCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import DefaultImage from "@/public/default.png";
+import DefaultImage from "/Users/advit/saas_tut/public/logo.svg";
 import { EmptyState } from "@/app/components/dashboard/EmptyState";
 
 async function getData(userId: String) {

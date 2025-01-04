@@ -11,7 +11,7 @@ import { requireUser } from "../utils/requireUser";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import DefaultImage from "@/public/default.png";
+import DefaultImage from "/Users/advit/saas_tut/public/default.png";
 // import DefaultImage from
 async function getData(userId: string) {
   const [sites, articles] = await Promise.all([

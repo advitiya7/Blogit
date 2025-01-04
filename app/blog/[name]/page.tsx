@@ -1,9 +1,8 @@
 import prisma from "@/app/utils/db";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import logo from "@/public/logo.svg";
-import DefaultImage from "@/public/default.png";
-import { ThemeProvider } from "@/app/components/dashboard/ThemeProvider";
+import logo from "/Users/advit/saas_tut/public/logo.svg";
+import DefaultImage from "/Users/advit/saas_tut/public/default.png";
 import { ModeToggle } from "@/app/components/dashboard/ThemeToggle";
 import {
   Card,

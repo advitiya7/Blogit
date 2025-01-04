@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "@/public/logo.svg";
+import Logo from "/Users/advit/saas_tut/public/logo.svg";
 // import { ThemeToggle } from "../dashboard/ThemeToggle";
 import { ModeToggle } from "../dashboard/ThemeToggle";
 import {
@@ -9,7 +9,7 @@ import {
 } from "@kinde-oss/kinde-auth-nextjs/components";
 import { Button } from "@/components/ui/button";
 // import Logo from "@/public/logo.svg";
-import HeroImage from "@/public/hero.png";
+import HeroImage from "/Users/advit/saas_tut/public/hero.png";
 
 export function Hero() {
   return (

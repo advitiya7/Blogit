@@ -1,7 +1,7 @@
 // import { ReactNode } from "react";
 
 import Link from "next/link";
-import logo from "@/public/logo.svg";
+import logo from "/Users/advit/saas_tut/public/logo.svg";
 import Image from "next/image";
 import { DashboardItems } from "../components/dashboard/DashboardItems";
 import { Home, Globe, DollarSign, CircleUser } from "lucide-react";
