@@ -19,7 +19,7 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 // import { create } from "domain";
 import {
   Book,
-  FileIcon,
+  // FileIcon,
   MoreHorizontal,
   PlusCircle,
   Settings,
@@ -36,20 +36,46 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Badge } from "@/components/ui/badge";
+import { EmptyState } from "@/app/components/dashboard/EmptyState";
 async function getData(userId: string, siteId: string) {
-  const data = await prisma.post.findMany({
+  // const data = await prisma.post.findMany({
+  //   where: {
+  //     userId: userId,
+  //     siteId: siteId,
+  //   },
+  //   select: {
+  //     image: true,
+  //     title: true,
+  //     createdAt: true,
+  //     id: true,
+  //     Site: {
+  //       select: {
+  //         subdirectory: true,
+  //       },
+  //     },
+  //   },
+  //   orderBy: {
+  //     createdAt: "desc",
+  //   },
+  // });
+  const data = await prisma.site.findUnique({
     where: {
+      id: siteId,
       userId: userId,
-      siteId: siteId,
     },
     select: {
-      image: true,
-      title: true,
-      createdAt: true,
-      id: true,
-    },
-    orderBy: {
-      createdAt: "desc",
+      subdirectory: true,
+      posts: {
+        select: {
+          image: true,
+          title: true,
+          createdAt: true,
+          id: true,
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
+      },
     },
   });
   return data;
@@ -70,7 +96,7 @@ export default async function SiteIdRoute({
     <>
       <div className="flex  w-full justify-end gap-x-4">
         <Button asChild variant="secondary">
-          <Link href="#">
+          <Link href={`/blog/${data?.subdirectory}`}>
             <Book className="size-4" />
             View blog
           </Link>
@@ -88,24 +114,13 @@ export default async function SiteIdRoute({
           </Link>
         </Button>
       </div>
-      {data.undefined || data.length == 0 ? (
-        <div className="flex flex-col items-center justify-center rounded-md border border-dashed p-8 text-center animate-in fade-in-50">
-          <div className="flex size-20 items-center justify-center rounded-full bg-primary/10">
-            <FileIcon className="size-10 text-primary" />
-          </div>
-          <h2 className="mt-6 text-xl font-semibold">
-            You don&apos;t have any sites created
-          </h2>
-          <p className="mb-8 mt-2 text-centet text-sm leading-6 text-muted-foreground max-w-sm mx-auto">
-            You currently have no sites, please create them so you can see them!
-          </p>
-          <Button asChild>
-            <Link href={`/dashboard/sites/${siteId}/create`}>
-              <PlusCircle className="mr-2 size-4" />
-              Create Site
-            </Link>
-          </Button>
-        </div>
+      {data?.posts.length == 0 ? (
+        <EmptyState
+          title="you don't have any articles created"
+          description="Please create some articles so you can see them"
+          buttonText="Create Article"
+          href={`/dashboard/sites/${siteId}/create`}
+        />
       ) : (
         <div>
           <Card>
@@ -125,7 +140,7 @@ export default async function SiteIdRoute({
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {data.map((item) => (
+                  {data?.posts.map((item) => (
                     <TableRow key={item.id}>
                       <TableCell>
                         <Image

@@ -1,7 +1,7 @@
 // import { ReactNode } from "react";
 
 import Link from "next/link";
-import Logo from "@/public/Logo.svg";
+import logo from "@/public/logo.svg";
 import Image from "next/image";
 import { DashboardItems } from "../components/dashboard/DashboardItems";
 import { Home, Globe, DollarSign, CircleUser } from "lucide-react";
@@ -39,7 +39,7 @@ export default function DashboardLayout({ children }: { chilren: ReactNode }) {
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
             <Link href="/" className="flex items-center gap-2 font-semibold">
-              <Image src={Logo} alt="Logo" className="size-8" />
+              <Image src={logo} alt="Logo" className="size-8" />
 
               <h3 className="text-2xl">
                 Blog<span className="text-primary">it</span>
